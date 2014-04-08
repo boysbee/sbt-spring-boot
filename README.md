@@ -10,6 +10,9 @@ Usage
 ----------
 `sbt run`
 
+* 1 for java style
+* 2 for scala style
+
 Package to jar
 ----------
 `sbt one-jar`
