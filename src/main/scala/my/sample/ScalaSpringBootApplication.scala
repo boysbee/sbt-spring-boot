@@ -18,13 +18,13 @@ object ScalaSpringBootApplication extends App {
             taskExecutor.execute(new Runnable() {
 
 			    override def run() {
-                    println("@@Start -> [%s] run ..." , Thread.currentThread().getName() )
+                    printf("@@Start -> [%s] run ...\n" ,Thread.currentThread().getName())
                     try {
                         Thread.sleep(5000)
                     } catch {
-                        case e: Exception => printf("ERROR : %s ", e.getMessage);
+                        case e: Exception => printf("ERROR : %s\n", e.getMessage);
                     }
-                    printf("@@Finish -> [%s] end ..." ,Thread.currentThread().getName())
+                    printf("@@Finish -> [%s] end ...\n" ,Thread.currentThread().getName())
                 }
             })
         }
@@ -33,11 +33,11 @@ object ScalaSpringBootApplication extends App {
 
             while(breaker) {
                 var count : Int = taskExecutor.getActiveCount()
-                printf("Active Threads : %d" + count);
+                printf("Active Threads : %d\n" , count);
                 try {
                     Thread.sleep(1000);
                 } catch {
-                    case e: Exception => printf("ERROR : %s ", e.getMessage);
+                    case e: Exception => printf("ERROR : %s\n", e.getMessage);
                 }
                 if (count == 0) {
                     taskExecutor.shutdown();
